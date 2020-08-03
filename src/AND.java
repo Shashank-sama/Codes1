@@ -16,6 +16,7 @@ class AND
         for(int i=0;i<n;i++)
             m[i]=sc.nextInt();
 
+        
 
 
         for(int i=0;i<n-1;i++)

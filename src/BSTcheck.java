@@ -37,6 +37,28 @@ class BSTcheck
 
     }
 
+
+    static boolean isValidBST(TreeNode root) {
+        return isBSTmm(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    static boolean isBSTmm(TreeNode root, long min, long max) {
+
+        if(root==null)
+            return true;
+
+        if(root.val<=min || root.val>=max)
+            return false;
+
+        return isBSTmm(root.left, min, root.val ) && isBSTmm(root.right, root.val, max);
+    }
+
+    /*
+//________________________________________________________________________________________________
+    //METHOD - 2 (My own)
+
+
+
     static boolean isValidBST(TreeNode root) {
 
         if(root==null)
@@ -81,5 +103,39 @@ class BSTcheck
         return true;
 
     }
+
+ //___________________________________________________________________________________________________
+
+    //METHOD - 3
+
+
+    public boolean isValidBST(TreeNode root) {
+         return isBST(root);
+    }
+
+    static TreeNode prev;
+
+    boolean isBST(TreeNode root) {
+
+        if (root!=null)
+        {
+            if (!isBST(root.left))
+                return false;
+
+            if (prev!=null&&root.val<=prev.val)
+                return false;
+
+            prev=root;
+
+            return isBST(root.right);
+        }
+    return true;
+    }
+
+
+    */
+
+
+
 }
 

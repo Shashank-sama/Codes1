@@ -33,9 +33,31 @@ class Treelvlorder
 
         System.out.println(ll);
 
+        printLevelOrder(root);
+
     }
 
-    static List<List<Integer>> levelOrder(TreeNode root) {
+    static void printLevelOrder(TreeNode root) {                //printing lvlorder using queue in O(n) time
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty())
+        {
+            TreeNode temp = queue.poll();
+            System.out.print(temp.val + " ");
+
+            /*Enqueue left child */
+            if (temp.left != null) {
+                queue.add(temp.left);
+            }
+
+            /*Enqueue right child */
+            if (temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+    }
+
+    static List<List<Integer>> levelOrder(TreeNode root) {     //creating list of all level nodes in levelorder in O(n^2)
 
         List<Integer> l = new ArrayList<>();
         List<List<Integer>> ll = new ArrayList<>();
@@ -51,7 +73,7 @@ class Treelvlorder
         return ll;
     }
 
-    static  List<Integer> onelvl(TreeNode root, int h) {
+    static  List<Integer> onelvl(TreeNode root, int h) {      //returning list of all nodes of a single level
 
         List<Integer> l = new ArrayList<>();
         List<Integer> l1 = new ArrayList<>();
@@ -66,12 +88,14 @@ class Treelvlorder
         if(root.right!=null)
             l1=onelvl(root.right, h-1);
 
-        l.addAll(l1);
+
+            l.addAll(l1);
+
 
         return l;
     }
 
-    static  int depth(TreeNode root) {
+    static  int depth(TreeNode root) {               //returning depth of tree where root depth=0
 
         if(root.left==null&&root.right==null)
             return 0;

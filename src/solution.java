@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
- class Solution {
+ class solution {
     public static void main(String[] args)throws IOException {
         Scanner sc = new Scanner(System.in);
         PrintWriter out = new PrintWriter(System.out);
