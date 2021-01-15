@@ -160,7 +160,7 @@ public class EXPCH {
     }
 
     static long modInverse(long a, long p) {
-        //calculates the modular multiplicative of a mod m.
+        //calculates the modular multiplicative of a mod p.
         //(assuming p is prime).
         return modPow(a, p-2, p);
     }
